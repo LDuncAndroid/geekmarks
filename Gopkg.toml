@@ -24,6 +24,7 @@
 #   go-tests = true
 #   unused-packages = true
 
+required = ["github.com/jteeuwen/go-bindata"]
 
 [[constraint]]
   branch = "master"
@@ -42,7 +43,7 @@
   branch = "master"
 
 [[constraint]]
-  name = "github.com/elazarl/go-bindata-assetfs"
+  name = "github.com/jteeuwen/go-bindata"
   branch = "master"
 
 [[constraint]]

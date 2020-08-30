@@ -3,80 +3,103 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:fdae1c338ec6667687fb3fdbde842b3c421c930163981b5d441502b240b7f50b"
   name = "github.com/dchest/uniuri"
   packages = ["."]
+  pruneopts = "UT"
   revision = "8902c56451e9b58ff940bbe5fec35d5f9c04584a"
 
 [[projects]]
   branch = "master"
+  digest = "1:9a622adb16b0d3c22a9d9482c9c43cf6272c951e4e414b2d951d6ce7cd2df23f"
   name = "github.com/dimonomid/interrors"
   packages = ["."]
+  pruneopts = "UT"
   revision = "cdd8c7951d2d4892f42473bef023dc6738e99be9"
 
 [[projects]]
   branch = "master"
-  name = "github.com/elazarl/go-bindata-assetfs"
-  packages = ["."]
-  revision = "9a6736ed45b44bf3835afeebb3034b57ed329f3e"
-
-[[projects]]
-  branch = "master"
+  digest = "1:1ba1d79f2810270045c328ae5d674321db34e3aae468eb4233883b473c5c0467"
   name = "github.com/golang/glog"
   packages = ["."]
+  pruneopts = "UT"
   revision = "23def4e6c14b4da8ac2ed8007337bc5eb5007998"
 
 [[projects]]
+  digest = "1:ffc060c551980d37ee9e428ef528ee2813137249ccebb0bfc412ef83071cac91"
   name = "github.com/golang/protobuf"
   packages = ["proto"]
+  pruneopts = "UT"
   revision = "925541529c1fa6821df4e44ce2723319eb2be768"
   version = "v1.0.0"
 
 [[projects]]
   branch = "master"
+  digest = "1:0c154dc22cb734f9db194421d82060601725a3d9c983943b83ae32b55eb5c51c"
   name = "github.com/gorilla/websocket"
   packages = ["."]
+  pruneopts = "UT"
   revision = "2d1e4548da234d9cb742cc3628556fef86aafbac"
 
 [[projects]]
   branch = "master"
+  digest = "1:1aa40fe85400837932c4e74c8829f7d2a48483cb497f8902993c8d2a829066c3"
+  name = "github.com/jteeuwen/go-bindata"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "6025e8de665b31fa74ab1a66f2cddd8c0abf887e"
+
+[[projects]]
+  branch = "master"
+  digest = "1:c4a1e4d1cd5271d9037e77966755d3b00e80e19ab7483d86d7ca0c8d60822f11"
   name = "github.com/juju/errors"
   packages = ["."]
+  pruneopts = "UT"
   revision = "6f54ff6318409d31ff16261533ce2c8381a4fd5d"
 
 [[projects]]
   branch = "master"
+  digest = "1:fcfb8557d801fd29beb6aa5dc98b749806c1b6ad827df3a1ef7580f18f32929f"
   name = "github.com/lib/pq"
   packages = [
     ".",
-    "oid"
+    "oid",
   ]
+  pruneopts = "UT"
   revision = "50761b0867bd1d9d069276790bcd4a3bccf2324a"
 
 [[projects]]
+  digest = "1:c5694bf1eeda631d3073a5e4ba0fa2e640f1f2842fcce992a5af2b3eebe5d084"
   name = "goji.io"
   packages = [
     ".",
     "internal",
     "pat",
-    "pattern"
+    "pattern",
   ]
+  pruneopts = "UT"
   revision = "491574a68aafef9ffec867f25c78a87624e80c37"
 
 [[projects]]
   branch = "master"
+  digest = "1:76ee51c3f468493aff39dbacc401e8831fbb765104cbf613b89bef01cf4bad70"
   name = "golang.org/x/net"
   packages = ["context"]
+  pruneopts = "UT"
   revision = "2fb46b16b8dda405028c50f7c7f0f9dd1fa6bfb1"
 
 [[projects]]
+  digest = "1:9871569366cb6ae827c9c5519c506158acd8e27d1395597e842991a0d8e3069a"
   name = "golang.org/x/oauth2"
   packages = [
     ".",
-    "internal"
+    "internal",
   ]
+  pruneopts = "UT"
   revision = "3314c49c831be809de14a5e6c7c68f4c83733a69"
 
 [[projects]]
+  digest = "1:9cf45e754ab2dff5f53a553e6948b994ff738e4d1092ca608dcada945d8be0ef"
   name = "google.golang.org/appengine"
   packages = [
     "internal",
@@ -85,19 +108,35 @@
     "internal/log",
     "internal/remote_api",
     "internal/urlfetch",
-    "urlfetch"
+    "urlfetch",
   ]
+  pruneopts = "UT"
   revision = "150dc57a1b433e64154302bdc40b6bb8aefa313a"
   version = "v1.0.0"
 
 [[projects]]
+  digest = "1:c27797c5f42d349e2a604510822df7d037415aae58bf1e6fd35624eda757c0aa"
   name = "gopkg.in/yaml.v2"
   packages = ["."]
+  pruneopts = "UT"
   revision = "53feefa2559fb8dfa8d81baad31be332c97d6c77"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "2a293478f62490b4f5c413db245bf234f72b17220ae66be70563f7bd264ab167"
+  input-imports = [
+    "github.com/dchest/uniuri",
+    "github.com/dimonomid/interrors",
+    "github.com/golang/glog",
+    "github.com/gorilla/websocket",
+    "github.com/jteeuwen/go-bindata",
+    "github.com/juju/errors",
+    "github.com/lib/pq",
+    "goji.io",
+    "goji.io/pat",
+    "goji.io/pattern",
+    "golang.org/x/oauth2",
+    "gopkg.in/yaml.v2",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1

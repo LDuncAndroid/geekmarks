@@ -1,7 +1,7 @@
 // Copyright 2017 Dmitry Frank <mail@dmitryfrank.com>
 // Licensed under the BSD, see LICENSE file for details.
 
-//go:generate go-bindata-assetfs -pkg server -nocompress -modtime 1 -mode 420 webroot/...
+//go:generate go-bindata -pkg server -nocompress -modtime 1 -mode 420 webroot/...
 
 package server // import "dmitryfrank.com/geekmarks/server/server"
 
@@ -21,7 +21,6 @@ import (
 	hh "dmitryfrank.com/geekmarks/server/httphelper"
 	"dmitryfrank.com/geekmarks/server/middleware"
 	"dmitryfrank.com/geekmarks/server/storage"
-	assetfs "github.com/elazarl/go-bindata-assetfs"
 	"github.com/golang/glog"
 	"github.com/juju/errors"
 )
@@ -143,7 +142,7 @@ func (gm *GMServer) CreateHandler() (http.Handler, error) {
 	rRoot.Handle(
 		pat.Get("/*"),
 		http.FileServer(
-			&assetfs.AssetFS{
+			AssetFS{
 				Asset:     Asset,
 				AssetDir:  AssetDir,
 				AssetInfo: assetInfo,
@@ -155,6 +154,54 @@ func (gm *GMServer) CreateHandler() (http.Handler, error) {
 	return rRoot, nil
 }
 
+/* // AssetFS implements http.FileSystem, allowing
+// embedded files to be served from net/http package.
+type AssetFS struct {
+	// Asset should return content of file in path if exists
+	Asset func(path string) ([]byte, error)
+	// AssetDir should return list of files in the path
+	AssetDir func(path string) ([]string, error)
+	// AssetInfo should return the info of file in path if exists
+	AssetInfo func(path string) (os.FileInfo, error)
+	// Prefix would be prepended to http requests
+	Prefix string
+	// Fallback file that is served if no other is found
+	Fallback string
+}
+
+func (fs AssetFS) Open(name string) (http.File, error) {
+	name = path.Join(fs.Prefix, name)
+	if len(name) > 0 && name[0] == '/' {
+		name = name[1:]
+	}
+	if b, err := fs.Asset(name); err == nil {
+		timestamp := defaultFileTimestamp
+		if fs.AssetInfo != nil {
+			if info, err := fs.AssetInfo(name); err == nil {
+				timestamp = info.ModTime()
+			}
+		}
+		return NewAssetFile(name, b, timestamp), nil
+	}
+	children, err := fs.AssetDir(name)
+
+	if err != nil {
+		if len(fs.Fallback) > 0 {
+			return fs.Open(fs.Fallback)
+		}
+
+		// If the error is not found, return an error that will
+		// result in a 404 error. Otherwise the server returns
+		// a 500 error for files not found.
+		if strings.Contains(err.Error(), "not found") {
+			return nil, os.ErrNotExist
+		}
+		return nil, err
+	}
+
+	return NewAssetDirectory(name, children, fs), nil
+}
+ */
 // createOptionsHandler creates an endpoint handler for the OPTIONS method: the
 // handler will set a few headers: Access-Control-Allow-Headers,
 // Access-Control-Max-Age, and Access-Control-Allow-Methods with the provided
